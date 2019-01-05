@@ -1,7 +1,7 @@
 function setup() {
-    createCanvas(1600, 900);
+    createCanvas(1300, 900);
     fill(0);
-    background(255, 242, 145);
+    background(247, 157, 0);
 }
 
 function draw() {
@@ -9,15 +9,28 @@ function draw() {
 }
 
 function mousePressed() {
-    ellipse(mouseX, mouseY, 5, 5);
+    ellipse(mouseX, mouseY, 6, 6);
 
-    points.push({x: mouseX, y: mouseY});
+    points.push({ x: mouseX, y: mouseY });
 
-    if (points.length > 1) {
-        line(mouseX, mouseY, points[points.length - 2].x, points[points.length - 2].y);
-    
+    BST.insert(mouseX);
+
+    // if (points.length > 1) {
+    //     line(mouseX, mouseY, points[points.length - 2].x, points[points.length - 2].y);
+
+    // }
+
+    return false;
+}
+
+function keyPressed() {
+    if (keyCode === UP_ARROW) {
+        // root = BST.getRootNode();
+        // BST.inorder(root);
+
+        build();
     }
 
 
-    return false;
+    return false; // prevent default
 }
