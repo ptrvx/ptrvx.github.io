@@ -9,26 +9,18 @@ function draw() {
 }
 
 function mousePressed() {
-    ellipse(mouseX, mouseY, 6, 6);
+    ellipse(mouseX, mouseY, 5, 5);
 
-    points.push({ x: mouseX, y: mouseY });
+    points.push({ x: mouseX, y: mouseY, avail: true });
 
-    BST.insert(mouseX);
-
-    // if (points.length > 1) {
-    //     line(mouseX, mouseY, points[points.length - 2].x, points[points.length - 2].y);
-
-    // }
+    
 
     return false;
 }
 
 function keyPressed() {
     if (keyCode === UP_ARROW) {
-        // root = BST.getRootNode();
-        // BST.inorder(root);
-
-        build();
+        layers();
     }
 
 
