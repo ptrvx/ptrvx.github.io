@@ -12,7 +12,7 @@ function hull() {
 
     for (var i = 0; i < points.length; i++) {
         if (points[i].avail) {
-            while (lower.length >= 2 && cross(points[lower[lower.length - 2]], points[lower[lower.length - 1]], points[i]) > 0) {
+            while (lower.length >= 2 && cross(points[lower[lower.length - 2]], points[lower[lower.length - 1]], points[i]) >= 0) {
                 points[lower.pop()].avail = true;
             }
             lower.push(i);
@@ -23,10 +23,11 @@ function hull() {
             }
         }
     }
+    points[lower[lower.length - 1]].avail = true;
 
     for (var i = points.length - 1; i >= 0; i--) {
         if (points[i].avail) {
-            while (upper.length >= 2 && cross(points[upper[upper.length - 2]], points[upper[upper.length - 1]], points[i]) > 0) {
+            while (upper.length >= 2 && cross(points[upper[upper.length - 2]], points[upper[upper.length - 1]], points[i]) >= 0) {
                 points[upper.pop()].avail = true;  
             }
             upper.push(i);
@@ -34,9 +35,8 @@ function hull() {
         }
     }
 
-    // lower.pop();
-    // upper.pop();
-
+    console.log(lower);
+    console.log(upper);
     return lower.concat(upper);
 }
 
