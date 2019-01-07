@@ -8,22 +8,33 @@ function cross(a, b, c) {
 function hull() {
     var upper = [];
     var lower = [];
+    var first = true;
 
     for (var i = 0; i < points.length; i++) {
-        while (lower.length >= 2 && cross(lower[lower.length - 2], lower[lower.length - 1], points[i]) > 0) {
-            lower.pop();
+        if (points[i].avail) {
+            while (lower.length >= 2 && cross(points[lower[lower.length - 2]], points[lower[lower.length - 1]], points[i]) > 0) {
+                points[lower.pop()].avail = true;
+            }
+            lower.push(i);
+            if (first) {
+                first = false;
+            } else {
+            points[i].avail = false;
+            }
         }
-        lower.push(points[i]);
     }
 
     for (var i = points.length - 1; i >= 0; i--) {
-        while (upper.length >= 2 && cross(upper[upper.length - 2], upper[upper.length - 1], points[i]) > 0) {
-            upper.pop();
+        if (points[i].avail) {
+            while (upper.length >= 2 && cross(points[upper[upper.length - 2]], points[upper[upper.length - 1]], points[i]) > 0) {
+                points[upper.pop()].avail = true;  
+            }
+            upper.push(i);
+            points[i].avail = false;
         }
-        upper.push(points[i]);
     }
 
-    lower.pop();
+    // lower.pop();
     // upper.pop();
 
     return lower.concat(upper);
@@ -39,14 +50,14 @@ function layers() {
     });
 
     console.log(points);
-    h = hull();
+    var h = hull();
     console.log(h);
 
     if (h) {
         for (var i = 0; i < h.length - 1; i++) {
-            line(h[i].x, h[i].y, h[i + 1].x, h[i + 1].y);
+            line(points[h[i]].x, points[h[i]].y, points[h[i + 1]].x, points[h[i + 1]].y);
         }
-        line[h[0].x, h[0].y, h[h.length - 1].x, h[h.length - 1].y];
+        line(points[h[0]].x, points[h[0]].y, points[h[h.length - 1]].x, points[h[h.length - 1]].y);
     }
 
 }
