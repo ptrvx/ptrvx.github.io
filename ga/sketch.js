@@ -13,8 +13,6 @@ function mousePressed() {
 
     points.push({ x: mouseX, y: mouseY, avail: true });
 
-    
-
     return false;
 }
 
@@ -23,6 +21,5 @@ function keyPressed() {
         layers();
     }
 
-
-    return false; // prevent default
+    return false;
 }
