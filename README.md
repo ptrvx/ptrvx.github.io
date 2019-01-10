@@ -4,5 +4,5 @@
 
 Projekat iz Geometrijskih Algoritama  
 Dve verzije zadatka:
-1. [/ga](../ga/index.html)      - Optimalni algoritam O(n^2) vreme i O(n) prostor 
-2. [/gax](../gax/index.html)     - Prikaz svih koraka gubi na optimalnosti jer u svakom frejmu prikazujem tacke
+1. [/ga](https://ptrve.github.io/ga/index.html)      - Optimalni algoritam O(n^2) vreme i O(n) prostor 
+2. [/gax](https://ptrve.github.io/gax/index.html)     - Prikaz svih koraka gubi na optimalnosti jer u svakom frejmu prikazujem tacke
