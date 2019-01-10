@@ -6,6 +6,7 @@ var sure = [];
 var it;
 var upper = 1;
 var go = false;
+var wrong = false;
 
 function cross(a, b, c) {
     //a1 * b2 - a2 * b1

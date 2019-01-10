@@ -3,7 +3,7 @@ function setup() {
     background(247, 157, 0);
     fill(0);
 
-    frameRate(5);
+    frameRate(100);
     noLoop();
 }
 
@@ -23,8 +23,15 @@ function draw() {
             upper = -1;
             it--;
         } else {
-            if (hull.length >= 2 && cross(points[hull[hull.length - 2]], points[hull[hull.length - 1]], points[it]) >= 0) {
+            if (wrong) {
+                hull.pop();
                 points[hull.pop()].avail = true;
+                wrong = false;
+            }
+            if (hull.length >= 2 && cross(points[hull[hull.length - 2]], points[hull[hull.length - 1]], points[it]) > 0) {
+                wrong = true;
+                hull.push(it);
+                //points[hull.pop()].avail = true;
             } else {
                 if (hull.length > 0)
                     points[it].avail = false;
