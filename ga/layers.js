@@ -1,4 +1,5 @@
 var points = [];
+var sorted = false;
 
 function cross(a, b, c) {
     //a1 * b2 - a2 * b1
@@ -19,16 +20,17 @@ function hull() {
             if (first) {
                 first = false;
             } else {
-            points[i].avail = false;
+                points[i].avail = false;
             }
         }
     }
+    
     points[lower[lower.length - 1]].avail = true;
 
     for (var i = points.length - 1; i >= 0; i--) {
         if (points[i].avail) {
             while (upper.length >= 2 && cross(points[upper[upper.length - 2]], points[upper[upper.length - 1]], points[i]) >= 0) {
-                points[upper.pop()].avail = true;  
+                points[upper.pop()].avail = true;
             }
             upper.push(i);
             points[i].avail = false;
@@ -39,13 +41,16 @@ function hull() {
 }
 
 function layers() {
-    points.sort(function (a, b) {
-        if (a.x != b.x) {
-            return a.x - b.x;
-        } else {
-            return a.y - b.y;
-        }
-    });
+    if (!sorted) {
+        points.sort(function (a, b) {
+            if (a.x != b.x) {
+                return a.x - b.x;
+            } else {
+                return a.y - b.y;
+            }
+        });
+        sorted = true;
+    }
 
     var h = hull();
 
