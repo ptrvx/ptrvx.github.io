@@ -63,10 +63,10 @@ function draw() {
 }
 
 function mousePressed() {
-    ellipse(mouseX, mouseY, 5, 5);
-
-    points.push({ x: mouseX, y: mouseY, avail: true });
-
+    if (!sorted) {
+        ellipse(mouseX, mouseY, 5, 5);
+        points.push({ x: mouseX, y: mouseY, avail: true });
+    }
     return false;
 }
 
