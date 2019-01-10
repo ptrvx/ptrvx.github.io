@@ -3,7 +3,7 @@ function setup() {
     background(247, 157, 0);
     fill(0);
 
-    frameRate(100);
+    frameRate(5);
     noLoop();
 }
 
