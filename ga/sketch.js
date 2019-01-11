@@ -18,7 +18,7 @@ function mousePressed() {
 }
 
 function keyPressed() {
-    if (keyCode === UP_ARROW) {
+    if (!sorted) {
         layers();
     }
 
