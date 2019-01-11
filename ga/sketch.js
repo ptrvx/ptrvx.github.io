@@ -18,9 +18,8 @@ function mousePressed() {
 }
 
 function keyPressed() {
-    if (!sorted) {
-        layers();
-    }
+
+    layers();
 
     return false;
 }
